@@ -3,9 +3,9 @@ import React from 'react';
 import Canvas from '../components/Canvas';
 
 const Home = () => (
-  <div>
+  <main>
     <Canvas />
-  </div>
+  </main>
 );
 
 export default Home;

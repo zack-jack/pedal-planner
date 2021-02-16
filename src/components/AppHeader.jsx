@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
-const AppHeader = () => (
+import Toolbar from './Toolbar';
+
+const AppHeader = ({ showPedals, showPedalboards, toggleDrawer }) => (
   <div className="bg-white shadow-md z-90">
     <div className="flex justify-between p-4">
       <Link to="/" className="text-2xl">Pedal Tetris</Link>
@@ -13,7 +16,18 @@ const AppHeader = () => (
         </ul>
       </nav>
     </div>
+    <Toolbar
+      showPedals={showPedals}
+      showPedalboards={showPedalboards}
+      toggleDrawer={toggleDrawer}
+    />
   </div>
 );
+
+AppHeader.propTypes = {
+  showPedals: PropTypes.bool.isRequired,
+  showPedalboards: PropTypes.bool.isRequired,
+  toggleDrawer: PropTypes.func.isRequired,
+};
 
 export default AppHeader;

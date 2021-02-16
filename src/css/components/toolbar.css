@@ -1,0 +1,23 @@
+.toolbar {
+}
+
+.toolbar__item {
+  @apply border-b-4 border-solid border-white text-md;
+}
+
+.toolbar__item:hover,
+.toolbar__item.active {
+  @apply border-red-600;
+}
+
+.toolbar__btn {
+  @apply flex items-center py-3 pr-3 pl-2 bg-white font-bold uppercase;
+}
+
+.toolbar__btn:focus {
+  outline: none;
+}
+
+.toolbar__btn-icon {
+  @apply w-4 h-4 mr-2 not-sr-only;
+}

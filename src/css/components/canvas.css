@@ -1,4 +1,4 @@
 .canvas {
   @apply flex p-2 bg-gray-100 overflow-hidden;
-  height: calc(100vh - 74px);
+  height: calc(100vh - 123px);
 }
