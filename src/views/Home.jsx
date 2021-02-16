@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Home = () => <div><h1>Home</h1></div>;
+import Canvas from '../components/Canvas';
+
+const Home = () => (
+  <div>
+    <Canvas />
+  </div>
+);
 
 export default Home;

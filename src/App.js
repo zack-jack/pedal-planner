@@ -12,9 +12,8 @@ import Contact from './views/Contact';
 export default function App() {
   return (
     <Router>
-      <div>
-        <AppHeader />
-
+      <AppHeader />
+      <main>
         <Switch>
           <Route path="/contact">
             <Contact />
@@ -23,7 +22,7 @@ export default function App() {
             <Home />
           </Route>
         </Switch>
-      </div>
+      </main>
     </Router>
   );
 }
