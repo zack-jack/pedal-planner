@@ -1,0 +1,58 @@
+[
+  {
+    "brand": "BOSS",
+    "name": "DD-7 Digital Delay",
+    "width": 2.875,
+    "height": 5.125,
+    "image": "boss-dd7.png"
+  },
+  {
+    "brand": "BOSS",
+    "name": "DM-2 Delay",
+    "width": 2.875,
+    "height": 5.125,
+    "image": "boss-dm2w.png"
+  },
+  {
+    "brand": "Origin Effects",
+    "name": "Cali76 Compact Deluxe",
+    "width": 2.6,
+    "height": 5.59,
+    "image": "origineffects-cali76cd.png"
+  },
+  {
+    "brand": "Strymon",
+    "name": "BigSky",
+    "width": 6.75,
+    "height": 5.1,
+    "image": "strymon-bigsky.png"
+  },
+  {
+    "brand": "Strymon",
+    "name": "Blue Sky",
+    "width": 4,
+    "height": 4.5,
+    "image": "strymon-bluesky.png"
+  },
+  {
+    "brand": "Strymon",
+    "name": "Volante",
+    "width": 7,
+    "height": 4.5,
+    "image": "strymon-volante.png"
+  },
+  {
+    "brand": "Strymon",
+    "name": "El Capistan",
+    "width": 4,
+    "height": 4.5,
+    "image": "strymon-elcap.png"
+  },
+  {
+    "brand": "Strymon",
+    "name": "Flint",
+    "width": 4,
+    "height": 4.5,
+    "image": "strymon-flint.png"
+  }
+]

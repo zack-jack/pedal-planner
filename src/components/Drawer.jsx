@@ -1,19 +1,53 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-const Drawer = ({ closeDrawer, showPedals, showPedalboards }) => {
+const Drawer = ({
+  closeDrawer, pedals, pedalboards, showPedals, showPedalboards,
+}) => {
   const classList = (showPedals || showPedalboards) ? 'drawer open' : 'drawer';
+  const pedalBrands = [...new Set(pedals.map(({ brand }) => brand))];
+  const pedalboardBrands = [...new Set(pedalboards.map(({ brand }) => brand))];
 
-  const text = () => {
+  const itemsList = () => {
     if (showPedals) {
-      return 'Pedals';
+      return pedalBrands.map((brand) => (
+        <div key={brand} className="drawer__group">
+          <p className="drawer__group-heading">{brand}</p>
+          {
+            pedals
+              .filter((item) => item.brand === brand)
+              .map(({ id, name }) => (
+                <ul>
+                  <li key={id} className="drawer__list-item">
+                    <button type="button" className="drawer__button">{name}</button>
+                  </li>
+                </ul>
+              ))
+          }
+        </div>
+      ));
     }
 
     if (showPedalboards) {
-      return 'Pedalboards';
+      return pedalboardBrands.map((brand) => (
+        <div key={brand} className="drawer__group">
+          <p className="drawer__group-heading">{brand}</p>
+          {
+            pedalboards
+              .filter((item) => item.brand === brand)
+              .map(({ id, name }) => (
+                <ul>
+                  <li key={id} className="drawer__list-item">
+                    <button type="button" className="drawer__button">{name}</button>
+                  </li>
+                </ul>
+              ))
+          }
+        </div>
+      ));
     }
 
-    return '';
+    return [];
   };
 
   return (
@@ -29,13 +63,34 @@ const Drawer = ({ closeDrawer, showPedals, showPedalboards }) => {
           <span className="w-full h-full sr-only">Close</span>
         </button>
       </div>
-      { text() }
+      { itemsList() }
     </div>
   );
 };
 
+Drawer.defaultProps = {
+  pedals: [],
+  pedalboards: [],
+};
+
 Drawer.propTypes = {
   closeDrawer: PropTypes.func.isRequired,
+  pedals: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    brand: PropTypes.string,
+    name: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    image: PropTypes.string,
+  })),
+  pedalboards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    brand: PropTypes.string,
+    name: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    image: PropTypes.string,
+  })),
   showPedals: PropTypes.bool.isRequired,
   showPedalboards: PropTypes.bool.isRequired,
 };
