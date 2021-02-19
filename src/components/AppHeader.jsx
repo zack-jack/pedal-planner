@@ -5,9 +5,14 @@ import { PropTypes } from 'prop-types';
 import Toolbar from './Toolbar';
 
 const AppHeader = ({ showPedals, showPedalboards, toggleDrawer }) => (
-  <div className="bg-white shadow-md z-90">
+  <header className="bg-white shadow-md z-90">
     <div className="flex justify-between p-4">
-      <Link to="/" className="text-2xl">Pedal Tetris</Link>
+      <Link
+        to="/"
+        className="text-2xl"
+      >
+        Pedal Tetris
+      </Link>
       <nav className="flex items-center">
         <ul>
           <li>
@@ -21,7 +26,7 @@ const AppHeader = ({ showPedals, showPedalboards, toggleDrawer }) => (
       showPedalboards={showPedalboards}
       toggleDrawer={toggleDrawer}
     />
-  </div>
+  </header>
 );
 
 AppHeader.propTypes = {
