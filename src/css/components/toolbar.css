@@ -1,4 +1,5 @@
 .toolbar {
+  @apply shadow-md z-100;
 }
 
 .toolbar__item {

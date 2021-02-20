@@ -17,8 +17,8 @@ const Drawer = ({
             pedals
               .filter((item) => item.brand === brand)
               .map(({ id, name }) => (
-                <ul>
-                  <li key={id} className="drawer__list-item">
+                <ul key={id} className="drawer__list">
+                  <li className="drawer__list-item">
                     <button type="button" className="drawer__button">{name}</button>
                   </li>
                 </ul>
@@ -36,8 +36,8 @@ const Drawer = ({
             pedalboards
               .filter((item) => item.brand === brand)
               .map(({ id, name }) => (
-                <ul>
-                  <li key={id} className="drawer__list-item">
+                <ul key={id} className="drawer__list">
+                  <li className="drawer__list-item">
                     <button type="button" className="drawer__button">{name}</button>
                   </li>
                 </ul>
@@ -80,7 +80,7 @@ Drawer.defaultProps = {
 Drawer.propTypes = {
   closeDrawer: PropTypes.func.isRequired,
   pedals: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     brand: PropTypes.string,
     name: PropTypes.string,
     width: PropTypes.number,
@@ -88,7 +88,7 @@ Drawer.propTypes = {
     image: PropTypes.string,
   })),
   pedalboards: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     brand: PropTypes.string,
     name: PropTypes.string,
     width: PropTypes.number,

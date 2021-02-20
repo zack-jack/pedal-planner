@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+import { getPedals, getPedalboards } from '../utils/api';
 import AppHeader from '../components/AppHeader';
 import Canvas from '../components/Canvas';
 import Drawer from '../components/Drawer';
-import { getPedals, getPedalboards } from '../utils/api';
+import Toolbar from '../components/Toolbar';
 
 const Home = () => {
   const [showPedals, setShowPedals] = useState(false);
@@ -42,7 +43,8 @@ const Home = () => {
 
   return (
     <main>
-      <AppHeader
+      <AppHeader />
+      <Toolbar
         showPedals={showPedals}
         showPedalboards={showPedalboards}
         toggleDrawer={toggleDrawer}
