@@ -7,10 +7,13 @@ import Drawer from '../components/Drawer';
 import Toolbar from '../components/Toolbar';
 
 const Home = () => {
-  const [showPedals, setShowPedals] = useState(false);
-  const [showPedalboards, setShowPedalboards] = useState(false);
   const [pedals, setPedals] = useState([]);
+  const [pedalSelections, setPedalSelections] = useState([]);
+  const [showPedals, setShowPedals] = useState(false);
+
   const [pedalboards, setPedalboards] = useState([]);
+  const [pedalboardSelections, setPedalboardSelections] = useState([]);
+  const [showPedalboards, setShowPedalboards] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +44,16 @@ const Home = () => {
     setShowPedalboards(false);
   };
 
+  const selectPedal = (selectionId) => {
+    const pedal = pedals.find(({ id }) => id === selectionId);
+    setPedalSelections([...pedalSelections, pedal]);
+  };
+
+  const selectPedalboard = (selectionId) => {
+    const pedalboard = pedalboards.find(({ id }) => id === selectionId);
+    setPedalboardSelections([...pedalboardSelections, pedalboard]);
+  };
+
   return (
     <main>
       <AppHeader />
@@ -52,11 +65,16 @@ const Home = () => {
       <Drawer
         closeDrawer={closeDrawer}
         pedals={pedals}
-        pedalboards={pedalboards}
+        selectPedal={selectPedal}
         showPedals={showPedals}
+        pedalboards={pedalboards}
+        selectPedalboard={selectPedalboard}
         showPedalboards={showPedalboards}
       />
-      <Canvas />
+      <Canvas
+        pedalSelections={pedalSelections}
+        pedalboardSelections={pedalboardSelections}
+      />
     </main>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-const Pedal = ({
+const Pedalboard = ({
   id, brand, name, width, height, image,
 }) => {
   const sizeStyles = {
@@ -13,7 +13,7 @@ const Pedal = ({
     <div
       key={id}
       style={sizeStyles}
-      className="z-20"
+      className="z-10"
     >
       <img
         alt={`${brand}-${name}`}
@@ -24,7 +24,7 @@ const Pedal = ({
   );
 };
 
-Pedal.propTypes = {
+Pedalboard.propTypes = {
   id: PropTypes.number.isRequired,
   brand: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -33,4 +33,4 @@ Pedal.propTypes = {
   image: PropTypes.string.isRequired,
 };
 
-export default Pedal;
+export default Pedalboard;

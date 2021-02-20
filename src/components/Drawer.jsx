@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 
 const Drawer = ({
-  closeDrawer, pedals, pedalboards, showPedals, showPedalboards,
+  closeDrawer, pedals, pedalboards, selectPedal, selectPedalboard, showPedals, showPedalboards,
 }) => {
   const classList = (showPedals || showPedalboards) ? 'drawer open' : 'drawer';
   const pedalBrands = [...new Set(pedals.map(({ brand }) => brand))];
@@ -19,7 +19,13 @@ const Drawer = ({
               .map(({ id, name }) => (
                 <ul key={id} className="drawer__list">
                   <li className="drawer__list-item">
-                    <button type="button" className="drawer__button">{name}</button>
+                    <button
+                      type="button"
+                      className="drawer__button"
+                      onClick={() => selectPedal(id)}
+                    >
+                      {name}
+                    </button>
                   </li>
                 </ul>
               ))
@@ -38,7 +44,13 @@ const Drawer = ({
               .map(({ id, name }) => (
                 <ul key={id} className="drawer__list">
                   <li className="drawer__list-item">
-                    <button type="button" className="drawer__button">{name}</button>
+                    <button
+                      type="button"
+                      className="drawer__button"
+                      onClick={() => selectPedalboard(id)}
+                    >
+                      {name}
+                    </button>
                   </li>
                 </ul>
               ))
@@ -47,11 +59,7 @@ const Drawer = ({
       ));
     }
 
-    return (
-      <div>
-        <p>Invalid selection.</p>
-      </div>
-    );
+    return <div />;
   };
 
   return (
@@ -95,6 +103,8 @@ Drawer.propTypes = {
     height: PropTypes.number,
     image: PropTypes.string,
   })),
+  selectPedal: PropTypes.func.isRequired,
+  selectPedalboard: PropTypes.func.isRequired,
   showPedals: PropTypes.bool.isRequired,
   showPedalboards: PropTypes.bool.isRequired,
 };
