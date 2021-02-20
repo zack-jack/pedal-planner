@@ -11,7 +11,7 @@ const AppHeader = ({ showPedals, showPedalboards, toggleDrawer }) => (
         to="/"
         className="text-2xl"
       >
-        Pedal Tetris
+        Pedal Planner
       </Link>
       <nav className="flex items-center">
         <ul>

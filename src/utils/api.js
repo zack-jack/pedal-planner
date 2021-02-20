@@ -1,6 +1,6 @@
 import { get } from './http';
 
-const api = process.env.REACT_APP_PEDAL_TETRIS_API;
+const api = process.env.REACT_APP_PEDAL_PLANNER_API;
 
 export const getPedals = () => get(`${api}/v1/pedals`, {}, {});
 

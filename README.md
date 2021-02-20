@@ -1,11 +1,11 @@
-# Pedal Tetris Front End
+# Pedal Planner Front End
 
-This repo contains the front end code for Pedal Tetris.
+This repo contains the front end code for Pedal Planner.
 
 Related Repos:
 
-- [API v1](https://github.com/zack-jack/pedal-tetris-api-v1).
-- [API v1 docs spec](https://github.com/zack-jack/pedal-tetris-api-v1-spec).
+- [API v1](https://github.com/zack-jack/pedal-planner-api-v1).
+- [API v1 docs spec](https://github.com/zack-jack/pedal-planner-api-v1-spec).
 
 ## Getting Started
 
