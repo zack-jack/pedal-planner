@@ -47,7 +47,11 @@ const Drawer = ({
       ));
     }
 
-    return [];
+    return (
+      <div>
+        <p>Invalid selection.</p>
+      </div>
+    );
   };
 
   return (
