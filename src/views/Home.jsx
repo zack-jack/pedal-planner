@@ -1,11 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import AppHeader from '../components/AppHeader';
 import Canvas from '../components/Canvas';
 import Drawer from '../components/Drawer';
-
-import mockPedals from '../data/pedals.json';
-import mockPedalboards from '../data/pedalboards.json';
+import { getPedals, getPedalboards } from '../utils/api';
 
 const Home = () => {
   const [showPedals, setShowPedals] = useState(false);
@@ -13,18 +11,17 @@ const Home = () => {
   const [pedals, setPedals] = useState([]);
   const [pedalboards, setPedalboards] = useState([]);
 
-  const getPedals = useCallback(() => {
-    setPedals(mockPedals);
-  }, []);
-
-  const getPedalboards = useCallback(() => {
-    setPedalboards(mockPedalboards);
-  }, []);
-
   useEffect(() => {
-    getPedals();
-    getPedalboards();
-  }, [getPedals, getPedalboards, pedals, pedalboards]);
+    const fetchData = async () => {
+      const pedalsRes = await getPedals();
+      const pedalboardsRes = await getPedalboards();
+
+      setPedals(pedalsRes.pedals);
+      setPedalboards(pedalboardsRes.pedalboards);
+    };
+
+    fetchData();
+  }, []);
 
   const toggleDrawer = (btnId) => {
     if (btnId.indexOf('add-pedal') > -1) {
