@@ -1,0 +1,3 @@
+.pedalboard {
+  @apply absolute z-10 bg-contain bg-no-repeat;
+}

@@ -1,43 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
 import Pedal from './Pedal';
 import Pedalboard from './Pedalboard';
 
-const Canvas = ({ pedalSelections, pedalboardSelections }) => (
-  <div className="canvas">
-    {
-      pedalSelections.map(({
-        id, brand, name, width, height, image,
-      }) => (
-        <Pedal
-          key={id}
-          id={id}
-          brand={brand}
-          name={name}
-          width={width}
-          height={height}
-          image={image}
-        />
-      ))
-    }
-    {
-      pedalboardSelections.map(({
-        id, brand, name, width, height, image,
-      }) => (
-        <Pedalboard
-          key={id}
-          id={id}
-          brand={brand}
-          name={name}
-          width={width}
-          height={height}
-          image={image}
-        />
-      ))
-    }
-  </div>
-);
+const Canvas = ({ pedalSelections, pedalboardSelections }) => {
+  const [scale] = useState(100);
+
+  return (
+    <div className="canvas">
+      {
+        pedalSelections.map(({
+          id, width, height, image,
+        }) => (
+          <Pedal
+            key={id}
+            width={width}
+            height={height}
+            image={image}
+            scale={scale}
+          />
+        ))
+      }
+      {
+        pedalboardSelections.map(({
+          id, width, height, image,
+        }) => (
+          <Pedalboard
+            key={id}
+            width={width}
+            height={height}
+            image={image}
+            scale={scale}
+          />
+        ))
+      }
+    </div>
+  );
+};
 
 Canvas.defaultProps = {
   pedalSelections: [],

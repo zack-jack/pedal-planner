@@ -1,3 +1,6 @@
 @import "./canvas.css";
+@import "./draggable.css";
 @import "./drawer.css";
+@import "./pedal.css";
+@import "./pedalboard.css";
 @import "./toolbar.css";
