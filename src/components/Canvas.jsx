@@ -12,9 +12,9 @@ const Canvas = ({ pedalSelections, pedalboardSelections }) => {
       {
         pedalSelections.map(({
           id, width, height, image,
-        }) => (
+        }, i) => (
           <Pedal
-            key={id}
+            key={`${id}-${i + 1}`}
             width={width}
             height={height}
             image={image}
@@ -25,9 +25,9 @@ const Canvas = ({ pedalSelections, pedalboardSelections }) => {
       {
         pedalboardSelections.map(({
           id, width, height, image,
-        }) => (
+        }, i) => (
           <Pedalboard
-            key={id}
+            key={`${id}-${i + 1}`}
             width={width}
             height={height}
             image={image}
