@@ -10,11 +10,19 @@ const Pedalboard = ({
 }) => {
   const [deltaPosition, setDeltaPosition] = useState({ x: 0, y: 0 });
 
-  const imgUrl = `${process.env.REACT_APP_PEDAL_PLANNER_API}/${image}`;
   // 1/3 scale is arbitrary and just worked well with window size
+  const scaleFactor = (scale / 3);
+  const defaultPosition = () => {
+    // eslint-disable-next-line no-undef
+    const { innerWidth } = window;
+    const x = innerWidth - (width * scaleFactor) - 25;
+
+    return { x, y: 5 };
+  };
+  const imgUrl = `${process.env.REACT_APP_PEDAL_PLANNER_API}/${image}`;
   const imgStyles = {
-    width: `${width * (scale / 3)}px`,
-    height: `${height * (scale / 3)}px`,
+    width: `${width * scaleFactor}px`,
+    height: `${height * scaleFactor}px`,
     backgroundImage: `url(${imgUrl})`,
   };
 
@@ -28,7 +36,7 @@ const Pedalboard = ({
 
   return (
     <Draggable
-      defaultPosition={{ x: 0, y: 0 }}
+      defaultPosition={defaultPosition()}
       onDrag={handleDrag}
     >
       <div className="pedalboard">
