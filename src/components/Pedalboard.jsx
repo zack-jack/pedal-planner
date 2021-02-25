@@ -9,6 +9,7 @@ const Pedalboard = ({
   id, width, height, image, scale, remove,
 }) => {
   const [deltaPosition, setDeltaPosition] = useState({ x: 0, y: 0 });
+  const [rotation, setRotation] = useState(0);
 
   // 1/3 scale is arbitrary and just worked well with window size
   const scaleFactor = (scale / 3);
@@ -24,6 +25,7 @@ const Pedalboard = ({
     width: `${width * scaleFactor}px`,
     height: `${height * scaleFactor}px`,
     backgroundImage: `url(${imgUrl})`,
+    transform: `rotate(${rotation}deg)`,
   };
 
   const handleDrag = (e, data) => {
@@ -32,6 +34,10 @@ const Pedalboard = ({
       x: x + data.deltaX,
       y: y + data.deltaY,
     });
+  };
+
+  const handleRotate = () => {
+    setRotation(rotation + 90);
   };
 
   return (
@@ -44,6 +50,7 @@ const Pedalboard = ({
           <button
             type="button"
             className="mr-2"
+            onClick={handleRotate}
           >
             <img
               alt="rotate icon"
