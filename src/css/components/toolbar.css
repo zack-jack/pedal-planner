@@ -21,4 +21,5 @@
 
 .toolbar__btn-icon {
   @apply w-4 h-4 mr-2 not-sr-only;
+  margin-bottom: 1px;
 }

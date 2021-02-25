@@ -4,34 +4,36 @@ import { PropTypes } from 'prop-types';
 import Pedal from './Pedal';
 import Pedalboard from './Pedalboard';
 
-const Canvas = ({ pedalSelections, pedalboardSelections }) => {
+const Canvas = ({
+  pedalSelections, pedalboardSelections, removePedal, removePedalboard,
+}) => {
   const [scale] = useState(100);
 
   return (
     <div className="canvas">
       {
-        pedalSelections.map(({
-          id, width, height, image,
-        }, i) => (
+        Object.keys(pedalSelections).map((key) => (
           <Pedal
-            key={`${id}-${i + 1}`}
-            width={width}
-            height={height}
-            image={image}
+            key={key}
+            id={key}
+            width={pedalSelections[key].width}
+            height={pedalSelections[key].height}
+            image={pedalSelections[key].image}
             scale={scale}
+            remove={removePedal}
           />
         ))
       }
       {
-        pedalboardSelections.map(({
-          id, width, height, image,
-        }, i) => (
+        Object.keys(pedalboardSelections).map((key) => (
           <Pedalboard
-            key={`${id}-${i + 1}`}
-            width={width}
-            height={height}
-            image={image}
+            key={key}
+            id={key}
+            width={pedalboardSelections[key].width}
+            height={pedalboardSelections[key].height}
+            image={pedalboardSelections[key].image}
             scale={scale}
+            remove={removePedalboard}
           />
         ))
       }
@@ -40,27 +42,29 @@ const Canvas = ({ pedalSelections, pedalboardSelections }) => {
 };
 
 Canvas.defaultProps = {
-  pedalSelections: [],
-  pedalboardSelections: [],
+  pedalSelections: {},
+  pedalboardSelections: {},
 };
 
 Canvas.propTypes = {
-  pedalSelections: PropTypes.arrayOf(PropTypes.shape({
+  pedalSelections: PropTypes.shape({
     id: PropTypes.number,
     brand: PropTypes.string,
     name: PropTypes.string,
     width: PropTypes.number,
     height: PropTypes.number,
     image: PropTypes.string,
-  })),
-  pedalboardSelections: PropTypes.arrayOf(PropTypes.shape({
+  }),
+  pedalboardSelections: PropTypes.shape({
     id: PropTypes.number,
     brand: PropTypes.string,
     name: PropTypes.string,
     width: PropTypes.number,
     height: PropTypes.number,
     image: PropTypes.string,
-  })),
+  }),
+  removePedal: PropTypes.func.isRequired,
+  removePedalboard: PropTypes.func.isRequired,
 };
 
 export default Canvas;
